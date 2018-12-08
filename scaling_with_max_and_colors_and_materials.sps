@@ -76,10 +76,11 @@ solid scaled_b = scaling(scaling_factor, scaling_factor, scaling_factor) >> b
 // getting dimensions before scaling
 echo(getBboxDimensions(b, "cm"))
 
-// scaling...
-//solid scaled_b = scaling(0.015, 0.015, 0.015) >> b
-
 // getting dimensions post scaling
 echo(getBboxDimensions(scaled_b, "cm"))
 
 make material(matType, bldgColor) >> scaled_b
+
+// display sizes
+public float scaledDim[]
+scaledDim = getBboxDimensions(scaled_b, "cm") 
