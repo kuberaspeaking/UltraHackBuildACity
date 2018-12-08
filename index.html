@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BuildACity</title>
+<link rel="stylesheet' type='text/css' href='https://libs.paramate.trinckle.com/paramateViewport-latest.css">
+<script src="https://libs.paramate.trinckle.com/paramateConfigurator-latest.js"></script>
+<script src="https://libs.paramate.trinckle.com/paramateControls-latest.js"></script>
+<script src="https://libs.paramate.trinckle.com/paramateViewportWebGL-latest.js"></script>
+<link rel="stylesheet" type = "text/css" href="mystyle.css">
+</head>
+<body>
+  <h1 style="text-align: center;">BUILD A CITY</h1>
+<div class="center" id="viewPort" style="width: 200px; height: 200px;"></div>
+<div class="center">
+  <img class="paramateParamClickable" data-paramate-paramName="main:select" data-paramate-paramValue="1" src="Perth_Bell_Tower.jpg" alt="Perth Bell Tower">
+  <img class="paramateParamClickable paramateParamClickableActive" data-paramate-paramName="main:select" data-paramate-paramValue="2" src="flying-pins.jpg" alt="Eindhoven Flying Pins">
+</div>
+
+<div id="configuratorControls" class="control_box" style="position: absolute; width: 250px; top: 70%; left: 50px">
+
+      <div class="param">
+        <span class="paramateParamAttr" data-paramate-paramname="t3d_Radius" data-paramate-paramattr="name">Radius</span><br>
+        <input class="paramateParam" type="range" data-paramate-paramname="t3d_Radius" min="0.7" max="1.3" step="any">
+      </div>
+
+      <div class="param">
+        <span class="paramateParamAttr" data-paramate-paramname="t3d_Height" data-paramate-paramattr="name">Height</span><br>
+        <input class="paramateParam" type="range" data-paramate-paramname="t3d_Height" min="0.7" max="1.3" step="any">
+      </div>
+
+
+      <div class="param">
+        Color:<br>
+          <div class="paramateParamClickable colorParam" title="Brown" style="background-color: rgba(74,56,54,1)" data-paramate-paramname="main:bldgColor" data-paramate-paramvalue="rgb(74,56,54)"></div>
+          <div class="paramateParamClickable colorParam" title="Blue" style="background-color: rgba(65,76,224,1)" data-paramate-paramname="main:bldgColor" data-paramate-paramvalue="rgb(65,76,224)"></div>
+          <div class="paramateParamClickable colorParam" title="Green" style="background-color: rgba(157,197,61,1)" data-paramate-paramname="main:bldgColor" data-paramate-paramvalue="rgb(157,197,61)"></div>
+          <div class="paramateParamClickable colorParam" title="Yellow" style="background-color: rgba(237,197,69,1)" data-paramate-paramname="main:bldgColor" data-paramate-paramvalue="rgb(237,197,69)"></div>
+          <div class="paramateParamClickable colorParam paramateParamClickableActive" title="Red" style="background-color: rgba(207,20,38,1)" data-paramate-paramname="main:bldgColor" data-paramate-paramvalue="rgb(207,20,38)"></div>
+          <div class="paramateParamClickable colorParam" title="Violet" style="background-color: rgba(192,62,213,1)" data-paramate-paramname="main:bldgColor" data-paramate-paramvalue="rgb(192,62,213)"></div>
+          <div class="paramateParamClickable colorParam" title="Cream" style="background-color: rgba(255,248,238,1)" data-paramate-paramname="main:bldgColor" data-paramate-paramvalue="rgb(255,248,238)"></div>
+      </div>
+
+    </div>
+
+<script>
+var configurator
+var viewPort
+var controls
+
+window.onload = function(){
+
+  // Create configurator object
+  configurator = new Paramate.Configurator({
+    APIHub: 'https://api.paramate.trinckle.com',
+    configuratorId: 'c7aa42f5-787a-4b65-be35-d5ddb8c78858',
+    APIKey: '4dbb2d1d0ade8450aeb97796703ec8c0'
+  });
+
+  // Create controls object
+  viewPort = new Paramate.ViewportWebGL({
+    configurator: configurator,
+    viewportElement: document.getElementById('viewPort')
+  });
+
+  // Create controls object
+  controls = new Paramate.Controls({
+    configurator: configurator,
+    // containerElement: document.getElementById('controls')
+  });
+
+  // Register viewport and controls
+  configurator.viewPort = viewPort;
+  configurator.controls = controls;
+
+  // Start configurator
+  configurator.initialize();
+}
+
+</script>
+</body>
+</html>
